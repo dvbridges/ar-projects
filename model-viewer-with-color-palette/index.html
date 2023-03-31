@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="colorjoe.css"/>
+    <link rel="stylesheet" href="style.css"/>
+    <script src="colorjoe.min.js"></script>
+    <title>AR Playground</title>
+
+    <!-- 💁 Include both scripts below to support all browsers! -->
+    <!-- Loads <model-viewer> for modern browsers: -->
+    <script
+      type="module"
+      src="https://unpkg.com/@google/model-viewer/dist/model-viewer.js"
+    ></script>
+
+    <!-- Loads <model-viewer> for old browsers like IE11: -->
+    <script
+      nomodule
+      src="https://unpkg.com/@google/model-viewer/dist/model-viewer-legacy.js"
+    ></script>
+    <!--     <script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script> -->
+
+    <!-- The following libraries and polyfills are recommended to maximize browser support -->
+    <!-- NOTE: you must adjust the paths as appropriate for your project -->
+
+    <!-- 🚨 REQUIRED: Web Components polyfill to support Edge and Firefox < 63 -->
+    <script src="https://unpkg.com/@webcomponents/webcomponentsjs@2.1.3/webcomponents-loader.js"></script>
+
+    <!-- 💁 OPTIONAL: Intersection Observer polyfill for better performance in Safari and IE11 -->
+    <script src="https://unpkg.com/intersection-observer@0.5.1/intersection-observer.js"></script>
+
+    <!-- 💁 OPTIONAL: Resize Observer polyfill improves resize behavior in non-Chrome browsers -->
+    <script src="https://unpkg.com/resize-observer-polyfill@1.5.1/dist/ResizeObserver.js"></script>
+
+    <!-- 💁 OPTIONAL: Fullscreen polyfill is required for experimental AR features in Canary -->
+    <script src="https://unpkg.com/fullscreen-polyfill@1.0.2/dist/fullscreen.polyfill.js"></script>
+
+    <!-- 💁 OPTIONAL: Include prismatic.js for Magic Leap support -->
+    <!-- <script src="https://unpkg.com/@magicleap/prismatic@0.18.2/prismatic.min.js"></script> -->
+    <!--     <script src="https://unpkg.com/three@0.126.0/build/three.js"></script> -->
+  </head>
+
+  <body id="box">
+    
+    <model-viewer
+      id="model"
+      src="https://cdn.glitch.global/9032c8ed-e1d0-420b-84f2-82a1edfc4f8b/DamagedHelmet.glb"
+      ar
+      ar-modes="webxr scene-viewer quick-look"
+      ar-placement="wall" 
+      auto-rotate
+      camera-controls 
+      disable-pan
+      shadow-intensity=".2"
+      alt="3D Model"
+    >
+      <button id="roundButton"></button>
+      <button
+        slot="ar-button"
+        style="border: none; background: none; width: 0px; height: 0px"
+      >
+        <img
+          src="https://cdn.glitch.global/9032c8ed-e1d0-420b-84f2-82a1edfc4f8b/arlogo.png"
+          ios-src="https://cdn.glitch.global/9032c8ed-e1d0-420b-84f2-82a1edfc4f8b/arlogo.png"
+          alt="Submit"
+          style="
+            border-radius: 4px;
+            border: none;
+            width: 15%;
+            position: absolute;
+            bottom: 32px;
+            right: 16px;
+          "
+        />
+      </button>
+      <div class="container">
+        <div class="colorjoe"></div>
+        <div class="config">
+            <div class="config-title">Selected Color</div>
+            <div class="slider-text selected-color-text"></div>
+            <div class="slider selected-color"></div>
+            <div class="slider-text metalness-text">Metalness</div>
+            <div class="slider selected-metalness">
+                <input type="range" min="0" max="1" value="0" step="0.01" class="material-slider" id="metalness-range">
+            </div>
+            <div class="slider-text roughness-text">Roughness</div>
+            <div class="slider selected-roughness">
+                <input type="range" min="0" max="1" value="0" step="0.01" class="material-slider" id="roughness-range">
+            </div>
+        </div>
+      </div>
+    
+    </model-viewer>
+    <script src="index.js"></script>
+  </body>
+</html>
