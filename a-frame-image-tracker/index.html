@@ -1,0 +1,68 @@
+<script src="https://cdn.jsdelivr.net/gh/aframevr/aframe@1c2407b26c61958baa93967b5412487cd94b290b/dist/aframe-master.min.js"></script>
+<script src="https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar-nft.js"></script>
+<script src="aframe-extras.js"></script>
+<script src="aframe-text-geometry-component.min.js"></script>
+
+<style>
+  .arjs-loader {
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-color: rgba(0, 0, 0, 0.8);
+    z-index: 9999;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .arjs-loader div {
+    text-align: center;
+    font-size: 1.25em;
+    color: white;
+  }
+</style>
+
+<body style="margin : 0px; overflow: hidden;">
+  <!-- minimal loader shown until image descriptors are loaded -->
+  <div class="arjs-loader">
+    <div>Loading, please wait...</div>
+  </div>
+  <a-scene
+    vr-mode-ui="enabled: false;"
+    renderer="logarithmicDepthBuffer: true; precision: medium; antialias: true; alpha: true;"
+    embedded
+    arjs="trackingMethod: best; sourceType: webcam;debugUIEnabled: false;"
+  >
+    <!-- we use cors proxy to avoid cross-origin problems ATTENTION! you need to set up your server -->
+    <a-nft
+      type="nft"
+      crossorigin="anonymous"
+      url="<URL to NFT>"
+      smooth="true"
+      smoothCount="10"
+      smoothTolerance=".001"
+      smoothThreshold="1"
+    >
+    <a-entity
+        crossorigin="anonymous"
+        gltf-model="<link to GLTF model>"
+        rotation="-90 0 0"        
+        scale="25 25 25"     
+        position="-0 -500 -00"
+        animation-mixer="clip: *"
+        duration="5"
+      ></a-entity>
+      <a-entity
+        crossorigin="anonymous"
+        gltf-model="<link to GLTF model>" 
+        scale="25 25 25"
+        position="-0 -500 -00"
+        animation-mixer="clip: *"
+        duration="5"
+      ></a-entity>
+    </a-nft>
+    <a-entity camera></a-entity>
+  </a-scene>
+</body>2
