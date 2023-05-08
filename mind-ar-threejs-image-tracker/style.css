@@ -1,0 +1,22 @@
+body {
+  margin: 0;
+}
+
+#container {
+  width: 100vw;
+  height: 100vh;
+  position: relative;
+  overflow: hidden;
+}
+
+#control {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 2;
+}
+
+button {
+  width: 75px;
+  height: 35px;
+}
